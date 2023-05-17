@@ -13,10 +13,14 @@ const hotelSchema = new Schema({
   estadoHotel : String,
   municipioHotel : String,
   totalHabitaciones : Number,  
-  totalPizos : Number,  
+  totalPisos : Number,  
   fechaCreacion: {
     type: Date,
     default: Date.now
+  },
+  statusHotel : {
+    type:  String,
+    default : "ACTIVO"
   }
 });
 

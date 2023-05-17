@@ -6,6 +6,12 @@ class ResponseDTO{
 
     data ; 
 
+    constructor(data, msg, statusCode){
+        this.data = data; 
+        this.msg = msg;  
+        this.statusCode = statusCode ; 
+    }
+
 }
 
 module.exports = ResponseDTO; 

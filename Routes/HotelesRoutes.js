@@ -8,4 +8,7 @@ router.get('/', hotelesController.getHoteles);
 
 router.post('/', hotelesController.createHotel);
 
+router.put('/', hotelesController.updateHotel);
+
+
 module.exports = router;

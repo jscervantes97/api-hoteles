@@ -3,16 +3,15 @@ let GenericRepository = require('../Repository/GenericRepository');
 const HotelesConstants = require('../Constants/HotelesConstants');
 const Hoteles = require('../Repository/Models/Hotel');
 const HotelService = require('../Services/HotelService');
-let hotelService = new HotelService();
 
 
 const getHoteles = async (req,res)=>{
     let idHotel = req.query.id ; 
     let response = {}; 
     if(idHotel != undefined){
-        response = await hotelService.findOneHotel(idHotel);
+        response = await HotelService.findOneHotel(idHotel);
     }else{
-        response = await hotelService.findAllHoteles();
+        response = await HotelService.findAllHoteles();
     }
     
     res.status(response.statusCode).json(response);
@@ -24,15 +23,25 @@ const createHotel = async (req,res)=>{
         direccionHotel : req.body.direccionHotel,
         estadoHotel  : req.body.estadoHotel,
         municipioHotel : req.body.municipioHotel,
-        totalPizos : req.body.totalPizos,
+        totalPisos : req.body.totalPisos,
         totalHabitaciones : req.body.totalHabitaciones
     } ;
-    let response = await hotelService.createHotel(hotelNuevo);
+    let response = await HotelService.createHotel(hotelNuevo);
     res.status(response.statusCode).json(response);
 }
 
-const updateHotel = (req,res)=>{
-    res.status(200).json();
+const updateHotel = async (req,res)=>{
+    let hotelNuevo = {
+        nombreHotel : req.body.nombreHotel,
+        direccionHotel : req.body.direccionHotel,
+        estadoHotel  : req.body.estadoHotel,
+        municipioHotel : req.body.municipioHotel,
+        totalPisos : req.body.totalPisos,
+        totalHabitaciones : req.body.totalHabitaciones,
+        statusHotel : req.body.statusHotel
+    } ;
+    let response = await HotelService.updateHotel(hotelNuevo);
+    res.status(response.statusCode).json(response);
 }
 
 const removeHotel = (req,res)=>{
@@ -42,5 +51,5 @@ const removeHotel = (req,res)=>{
 
 
 module.exports = {
-    getHoteles,updateHotel, createHotel, removeHotel
+    getHoteles,updateHotel, createHotel, removeHotel, updateHotel
 } 
