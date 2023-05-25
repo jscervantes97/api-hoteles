@@ -29,6 +29,20 @@ app.get('/', function(req, res) {
 
 app.use('/api' , routes);
 
-app.listen(3000, function() {
-  console.log('Aplicación ejemplo, escuchando el puerto 3000!');
+
+
+const server = require('http').createServer(app);
+const io = require('socket.io')(server, { cors: { origin : "*" } });
+io.on('connection', (socket) => {
+    
+    console.log('User connected ' + socket.id);  
+  
+    socket.on('message', (message) => {
+      console.log('message' , message);
+      socket.broadcast.emit('message' , message);
+    });
+
+});
+server.listen(3000 , ()=>{
+  console.log("app runing on port 3000");
 });

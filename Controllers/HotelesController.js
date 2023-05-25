@@ -1,7 +1,4 @@
 
-let GenericRepository = require('../Repository/GenericRepository');
-const HotelesConstants = require('../Constants/HotelesConstants');
-const Hoteles = require('../Repository/Models/Hotel');
 const HotelService = require('../Services/HotelService');
 
 

@@ -31,4 +31,4 @@ const habitacionSchema = new Schema({
 });
 
 
-module.exports = mongoose.model('Hotel', habitacionSchema);
+module.exports = mongoose.model('Habitaciones', habitacionSchema);
